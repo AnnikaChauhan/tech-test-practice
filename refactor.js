@@ -1,6 +1,9 @@
-import brandStore from './brand-store';
-import Color from 'color';
+//change variables, lets to consts
 
+import brandStore from './brand-store';
+import Color from 'color'; //should not have a capital letter
+
+//kind of messy way to store data, maybe an object would be better
 const defaultColours = [
     { name: 'primary', value: '#333' },
     { name: 'secondary', value: '#222' },
@@ -9,10 +12,7 @@ const defaultColours = [
 
 const defaultBodyFont = 'Lato';
 const allowedFonts = ['lato', 'arial', 'helvetica', 'courier'];
-const convertToRgb = c =>
-    Color(c)
-        .rgb()
-        .string();
+const convertToRgb = c => Color(c).rgb().string(); //the variable c doesn't explain anything, this has already been moved to one line where it was previously several
 
 buildTheme = (colours, bodyFont) => {
     if (!colours) colours = defaultColours;
@@ -21,6 +21,7 @@ buildTheme = (colours, bodyFont) => {
     colours.forEach(c => {
         newColours[c.name] = convertToRgb(c.value);
     });
+    //this is a function in a function it doesn't need to be there
     const validateBodyFont = () => {
         let found = false;
         allowedFonts.forEach(a => {
